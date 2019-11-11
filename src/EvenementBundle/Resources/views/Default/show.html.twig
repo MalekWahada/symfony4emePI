@@ -1,0 +1,110 @@
+{% extends 'BaseAdmin.html.twig' %}
+
+{% block container %}
+
+
+
+        <link rel="stylesheet"  href="{{ asset('css/jquery.rateyo.min.css')}}" />
+
+    <h1>Event</h1>
+
+
+<fieldset>
+    <table>
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ event.id }}</td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td>{{ event.nom }}</td>
+        </tr>
+        <tr>
+            <th>Lieu</th>
+            <td>{{ event.lieu }}</td>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <td>{{ event.date }}</td>
+        </tr>
+        <tr>
+            <th>Heure</th>
+            <td>{{ event.heure }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ event.description }}</td>
+        </tr>
+        <tr>
+            <th>Capacite</th>
+            <td>{{ event.capacite }}</td>
+        </tr>
+        <tr>
+            <th>Nbreparticipant</th>
+            <td>{{ event.nbreParticipant }}</td>
+        </tr>
+        <tr>
+
+            <td><div ><img src="{{ event.img }}" style="width:300px"> </div></td>
+        </tr>
+        </tbody>
+    </table>
+</fieldset>
+
+    <button class="btn  btn-pill btn-outline-success" data-target="#Modal" data-toggle="modal">Evaluation</button>
+    <div class="modal fade" tabindex="-1" id="Modal"
+         data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">Evaluation</h4>
+                </div>
+                <div class="modal-body">
+                    {% if event.nbreParticipant> (event.capacite)/2  %}
+                    <p> l'évenement a réussi avec un nombre de participant {{ event.nbreParticipant }}.</p>
+                    {% else %}
+                    <p>l'évenement n'a pas bien éeussi avec un nombre de participant {{ event.nbreParticipant }}.</p>
+                </div>
+
+                {% endif %}
+
+
+
+
+
+
+                <div class="rateyo"></div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary"
+                            data-dismiss="modal">Close</button>
+                </div>
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+
+        <script src="{{ asset('js/jquery.min.js')}}"></script>
+        <script src="{{ asset('js/jquery.rateyo.js')}}"></script>
+    <script>
+
+        $(function () {
+            $(".rateyo").rateYo();
+        });
+
+    </script>
+
+{% endblock %}

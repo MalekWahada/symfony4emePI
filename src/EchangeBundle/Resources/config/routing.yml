@@ -1,0 +1,66 @@
+echange_index:
+    path:     /
+    defaults: { _controller: "EchangeBundle:Echange:index" }
+    methods:  GET
+
+echange_show:
+    path:     /{idech}/show
+    defaults: { _controller: "EchangeBundle:Echange:show" }
+    methods:  GET
+
+echange_new:
+    path:     /new
+    defaults: { _controller: "EchangeBundle:Echange:new" }
+    methods:  [GET, POST]
+
+echange_edit:
+    path:     /{idech}/edit
+    defaults: { _controller: "EchangeBundle:Echange:edit" }
+    methods:  [GET, POST]
+
+echange_delete:
+    path:     /{idech}/delete
+    defaults: { _controller: "EchangeBundle:Echange:delete" }
+    methods:  DELETE
+echange_supp:
+    path:    /supprimer/{idech}
+    defaults: { _controller: "EchangeBundle:Echange:supprimer" }
+echange_map:
+    path:     /map
+    defaults: { _controller: "EchangeBundle:Echange:Gmap" }
+echange_pdf:
+    path:     /{idech}/pdf
+    defaults: { _controller: "EchangeBundle:Echange:PDF" }
+echange_index1:
+    path:     /index
+    defaults: { _controller: "EchangeBundle:Echange:index1" }
+    methods:  GET
+
+echange_show1:
+    path:     /{idech}/show1
+    defaults: { _controller: "EchangeBundle:Echange:show1" }
+    methods:  GET
+
+echange_new1:
+    path:     /new1
+    defaults: { _controller: "EchangeBundle:Echange:new1" }
+    methods:  [GET, POST]
+
+echange_edit1:
+    path:     /{idech}/edit1
+    defaults: { _controller: "EchangeBundle:Echange:edit1" }
+    methods:  [GET, POST]
+
+echange_delete1:
+    path:     /{idech}/delete1
+    defaults: { _controller: "EchangeBundle:Echange:delete1" }
+    methods:  DELETE
+echange_supp1:
+    path:    /supprimer1/{idech}
+    defaults: { _controller: "EchangeBundle:Echange:supprimer1" }
+echange_map1:
+    path:     /map1
+    defaults: { _controller: "EchangeBundle:Echange:Gmap1" }
+echange_pdf1:
+    path:     /{idech}/pdf1
+    defaults: { _controller: "EchangeBundle:Echange:PDF1" }

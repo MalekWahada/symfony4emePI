@@ -1,0 +1,45 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block container %}
+    <h1>Echange</h1>
+
+    <table id="example" class="table table-hover" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th class="product-thumbnail">Livre Proposé</th>
+            <th class="product-name">Livre Demandé</th>
+            <th class="product-price">Etat des Livres</th>
+            <th class="product-quantity">Description</th>
+            <th class="product-remove">Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <form>
+            <tr>
+
+                <td><a href="{{ path('echange_show', { 'idech': echange.idech }) }}">{{ echange.idprop }}</a></td>
+                <td>{{ echange.iddem }}</td>
+                <td>{{ echange.stat }}</td>
+                <td>{{ echange.descr }}</td>
+                <td>
+                    {{ twitterButton() }}
+                </td>
+                <input type="submit" id="pdf" name="pdf" value="pdf" class="btn btn-primary" />
+            </tr>
+        </form>
+        </tbody>
+    </table>
+    <ul>
+        <li>
+            <a class="btn btn-primary" href="{{ path('echange_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a class="btn btn-primary" href="{{ path('echange_edit', { 'idech': echange.idech }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input class="btn btn-primary" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

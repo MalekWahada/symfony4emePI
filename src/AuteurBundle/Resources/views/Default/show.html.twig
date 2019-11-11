@@ -1,0 +1,45 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block container %}
+    <h1> Informations Auteur</h1>
+
+    <table id="example" class="table table-hover dataTable no-footer dtr-inline" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%;">
+        <tbody>
+            <tr>
+                <th>Idautr</th>
+                <td>{{ auteur.idautr }}</td>
+            </tr>
+            <tr>
+                <th>Authorname</th>
+                <td>{{ auteur.authorname }}</td>
+            </tr>
+            <tr>
+                <th>Birthdate</th>
+                <td>{% if auteur.birthdate %}{{ auteur.birthdate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Deathdate</th>
+                <td>{% if auteur.deathdate %}{{ auteur.deathdate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ auteur.contact }}</td>
+            </tr>
+            <tr>
+                <th>Descrip</th>
+                <td>{{ auteur.descrip }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('auteur_index') }}"class="btn btn-icon btn-pill btn-info" data-toggle="tooltip" title="nouveau"><i >Back to list</i></a>
+        </li>
+        <li>
+            <a  href="{{ path('auteur_edit', { 'idautr': auteur.idautr }) }}"
+                class="btn btn-icon btn-pill btn-primary" data-toggle="tooltip" title="Edit"><i>Edit</i></a>
+        </li>
+
+    </ul>
+{% endblock %}

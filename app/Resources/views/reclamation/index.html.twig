@@ -1,0 +1,122 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block container %}
+    <h1>Reclamations list</h1>
+    <style>
+        h1 { color: #c9d0d4; font-family: 'Helvetica Neue', sans-serif; font-size: 46px; font-weight: 100; line-height: 50px; letter-spacing: 1px; padding: 0 0 40px; border-bottom: double #555; }
+
+    </style>
+    <div class="col-md">
+        <div class="d-flex border">
+            <div class="bg-success text-light p-4">
+                <div class="d-flex align-items-center h-100">
+                    <img src="{{ asset('icons/chat.png') }}" alt="">
+                </div>
+            </div>
+            <div class="flex-grow-1 bg-white p-4">
+                <p class="text-uppercase text-secondary mb-0">Reclamation</p>
+                <h3 class="font-weight-bold mb-0" id="compter">{% for com in compte %}{{ com.nb }}{% endfor %}</h3>
+            </div>
+        </div>
+    </div>
+    <script>
+        if(document.getElementById("compter").innerHTML>='5'){
+            alert("beaucoup de reclamation");
+        }
+    </script>
+    <style>
+        h5 { color: #7c795d; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0; }
+        input[type=text] {
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url("{{ asset('icons/search.png') }}");
+            background-position: 0.5px 0.5px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+        input[type=text]:focus {
+            width: 100%;
+        }
+    </style>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <div id="example_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+            <div class="row"><div class="col-sm-12"><table id="myTable"  class="table table-hover dataTable no-footer dtr-inline" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%;">
+                        <form methode="POST" action="rechercher.php" >
+                            <div class="form-row">
+                                <div class="col-md-4 mb-3">
+                                    <input type="text" name="id" class="form-control is-valid"  id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                                    <p id="cntl2"></p>
+
+
+                                </div>
+                            </div>
+                        </form>
+                    <thead>
+                    <tr role="row"><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 103.5px;" aria-label="Name: activate to sort column ascending">Sujet</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 167.5px;" aria-label="Position: activate to sort column ascending">Date</th><th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 71.5px;" aria-sort="descending" aria-label="Office: activate to sort column ascending">Email</th><th class="actions sorting_disabled" rowspan="1" colspan="1" style="width: 79px;" aria-label="Actions">Actions</th></tr>
+
+
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+            <tr role="row" class="odd"><td>{{ reclamation.sujet }}</td><td>{% if reclamation.date %}{{ reclamation.date|date('Y-m-d') }}{% endif %}</td><td>{{ reclamation.email}}</td>
+
+
+
+                <td>
+
+                            <a href="{{ path('reclamation_show', { 'id': reclamation.id }) }}" style="width:80px"class="btn btn-icon btn-pill btn-primary" data-toggle="tooltip" title="" data-original-title="Show"><i>Show</i></a>
+
+                            <a href="{{ path('reclamation_delete1', { 'id': reclamation.id }) }}"style="width:80px" class="btn btn-icon btn-pill btn-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i >Delete</i></a>
+
+
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+                </div>
+            </div>
+        </div>
+                    </div>
+                </div>
+
+
+
+            <a href="{{ path('reclamation_new') }}" class="btn btn-success" data-toggle="tooltip" title="" data-original-title="New">Repondre</a>
+
+
+
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+
+{% endblock %}

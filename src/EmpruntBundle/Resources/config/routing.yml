@@ -1,0 +1,17 @@
+emprunt_emprunt:
+    resource: "@EmpruntBundle/Resources/config/routing/emprunt.yml"
+    prefix:   /emprunt
+
+emprunt_client_homepage:
+    path:     /
+    defaults: { _controller: EmpruntBundle:Default:index }
+emprunt_reclamation:
+    resource: "@EmpruntBundle/Resources/config/routing/reclamation.yml"
+    prefix:   /reclamation
+emprunt_post:
+    resource: "@EmpruntBundle/Resources/config/routing/post.yml"
+    prefix:   /post
+
+emprunt_client:
+    resource: "@EmpruntBundle/Resources/config/routing/empruntClient.yml"
+    prefix:   /client

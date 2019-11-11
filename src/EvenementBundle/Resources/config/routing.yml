@@ -1,0 +1,3 @@
+evenement_client_homepage:
+    path:     /
+    defaults: { _controller: EvenementClientBundle:Default:index }

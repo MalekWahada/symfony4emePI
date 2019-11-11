@@ -1,0 +1,50 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block container %}
+
+    <head>
+        <title>Simple Map</title>
+
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta charset="utf-8">
+        <style>
+            /* Always set the map height explicitly to define the size of the div
+             * element that contains the map. */
+            #map {
+                height: 100%;
+            }
+            /* Optional: Makes the sample page fill the window. */
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+    <tr>
+    <div id="map"></div>
+    </tr>
+    <script>
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat:{{ locaux.xs }}, lng:{{ locaux.ys }}},
+                zoom: 5
+            });
+
+            var marker = new google.maps.Marker({
+                position: {lat:{{ locaux.xs }}, lng: {{ locaux.ys }}},
+                map: map,
+                animation: google.maps.Animation.BOUNCE,
+            });
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBS90c1RBEe4Ukcu-hy63NFUg8WJdpm-EM&callback=initMap"
+            async defer></script>
+    </body>
+
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+emprunt_index:
+    path:     /
+    defaults: { _controller: "EmpruntBundle:Emprunt:index" }
+    methods:  [GET, POST]
+
+emprunt_show:
+    path:     /{id}/show
+    defaults: { _controller: "EmpruntBundle:Emprunt:show" }
+    methods:  GET
+
+emprunt_new:
+    path:     /new
+    defaults: { _controller: "EmpruntBundle:Emprunt:new" }
+    methods:  [GET, POST]
+
+emprunt_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EmpruntBundle:Emprunt:edit" }
+    methods:  [GET, POST]
+
+emprunt_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EmpruntBundle:Emprunt:delete" }
+    methods:  DELETE
+
+emprunt_delete1:
+    path:     /{id}/delete1
+    defaults: { _controller: "EmpruntBundle:Emprunt:deleteFromIndex" }
+
+
+emprunt_rechercher:
+    path:     /rechercher.php
+    defaults: { _controller: "EmpruntBundle:Emprunt:rechercher" }
+    methods:  [GET, POST]
+
+emprunt_indexClient:
+    path:     /client
+    defaults: { _controller: "EmpruntBundle:Emprunt:indexClient" }
+    methods:  [GET, POST]

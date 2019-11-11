@@ -1,0 +1,12 @@
+participant_index:
+    path:     /
+    defaults: { _controller: "ParticipantBundle:Participant:index" }
+    methods:  GET
+
+participant_show:
+    path:     /{id}/show
+    defaults: { _controller: "ParticipantBundle:Participant:show" }
+    methods:  GET
+
+
+

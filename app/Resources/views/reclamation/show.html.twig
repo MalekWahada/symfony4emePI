@@ -1,0 +1,98 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block container %}
+    <head>
+
+        <!-- main CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
+    </head>
+    <div class="hpanel email-compose mailbox-view mg-b-15">
+        <div class="panel-heading hbuilt">
+
+            <div class="p-xs h4">
+                <small class="pull-right">
+                    {% if reclamation.date %}{{ reclamation.date|date('Y-m-d') }}{% endif %}
+                </small>
+
+            </div>
+        </div>
+        <div class="border-top border-left border-right bg-light">
+            <div class="p-m custom-address-mailbox">
+
+                <div>
+                    <span class="font-extra-bold">Subject: </span> {{ reclamation.sujet }}
+                </div>
+                <div>
+                    <span class="font-extra-bold">From: </span>
+                    <a href="#">{{ reclamation.email }}</a>
+                </div>
+                <div>
+                    <span class="font-extra-bold">Date: </span> {% if reclamation.date %}{{ reclamation.date|date('Y-m-d') }}{% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="panel-body panel-csm">
+            <div>
+                <h4>{{ reclamation.sujet }}</h4>
+
+                <p>{{ reclamation.desctription }}</p>
+
+                <p>{{ reclamation.email }}
+                </p>
+            </div>
+        </div>
+
+        <br>
+    <button  class="btn btn-icon btn-pill btn-primary"><a href="{{ path('reclamation_index') }}">Back to the list</a></button>
+        <br>
+        {{ form_start(delete_form) }}
+        <br>
+
+    <button class="btn btn-icon btn-pill btn-danger" style="width:100px"> Delete</button>
+    {{ form_end(delete_form) }}
+
+    {#
+    <h1>Reclamation</h1>
+
+    <table border="1px">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reclamation.id }}</td>
+            </tr>
+            <tr>
+                <th>Sujet</th>
+                <td>{{ reclamation.sujet }}</td>
+            </tr>
+            <tr>
+                <th>Desctription</th>
+                <td>{{ reclamation.desctription }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if reclamation.date %}{{ reclamation.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ reclamation.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reclamation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>#}
+    </div>
+{% endblock %}

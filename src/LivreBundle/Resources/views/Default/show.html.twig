@@ -1,0 +1,190 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block container %}
+
+    <div  style="    text-align: center; font-size:18px ">
+    <h1 style="color: #00afea" >Livre : {{ livre.nom }}  </h1>
+
+    <td class="img-fluid col-md-6"><img src="{{ livre.img }}" style="margin-top-0: auto "></td>
+        <fieldset>
+    <table style="text-align: -webkit-match-parent">
+        <tbody>
+
+            <tr>
+                <th>Nom:</th>
+                <td>{{ livre.nom }}</td>
+            </tr>
+
+            <tr>
+                <th>Auteur:</th>
+                <td>{{ livre.auteur }}</td>
+            </tr>
+
+            <tr>
+                <th>Categorie:</th>
+                <td>{{ livre.categorie }}</td>
+            </tr>
+
+            <tr>
+                <th>Mpub:</th>
+                <td >{{ livre.mPub }}</td>
+            </tr>
+            <br>
+            <tr>
+                <th>Description:</th>
+                <td>{{ livre.description }}</td>
+            </tr>
+            <br>
+            <tr>
+                <th>Prix:</th>
+                <td>{{ livre.prix }} DT </td>
+
+            </tr>
+            <tr>
+                <th>Stock:</th>
+                <td>{{ livre.stock }}</td>
+
+
+           </tr>
+            <tr class="ratelivre">
+                <th>Rate:</th>
+                <td>
+                    <div class="stars-outer">
+                        <div class="stars-inner"></div>
+                    </div>
+                    <span class="number-rating"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <th>Codeqr:</th>
+                <td class="img-fluid col-md-6"><img src="{{ livre.codeqr }}" style="text-align: center " align="center"></td>
+            </tr>
+        <tr>
+            <td></td>
+            <td><div id="barchart_material" style="width: 850px; height: 110px;"></div></td>
+        </tr>
+      </tbody>
+    </table>
+        </fieldset>
+
+   <br>
+            <a href="{{ path('livres_index') }}"class="btn btn-danger">Back to the list</a>
+
+            <a href="{{ path('livres_edit', { 'id': livre.id }) }}"class="btn btn-danger">Edit</a>
+
+            {{ form_start(delete_form) }}
+        <br>
+
+        <input type="submit" value="Delete"class="btn btn-danger">
+            {{ form_end(delete_form) }}
+
+</div>
+
+    <style>
+        .stars-outer {
+            position: relative;
+            display: inline-block;
+        }
+
+        .stars-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+        }
+
+        .stars-outer::before {
+            content: "\f005 \f005 \f005 \f005 \f005";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: #ccc;
+        }
+
+        .stars-inner::before {
+            content: "\f005 \f005 \f005 \f005 \f005";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: #f8ce0b;
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Livre', 'Stock totale', 'Livres restants'],
+
+                ['{{ livre.nom }}', 100, {{ livre.stock }}]
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Gestion du stock des livres',
+                    subtitle: '',
+                },
+                bars: 'horizontal' // Required for Material Bar Charts.
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
+    <script>
+        // Initial Ratings
+        const ratings = {
+            ratelivre: {{ livre.rate }},
+        }
+
+        // Total Stars
+        const starsTotal = 5;
+
+        // Run getRatings when DOM loads
+        document.addEventListener('DOMContentLoaded', getRatings);
+
+        // Form Elements
+        const ratingControl = document.getElementById('rating-control');
+
+
+        // Rating control change
+        ratingControl.addEventListener('blur', (e) => {
+            const rating = e.target.value;
+
+            // Make sure 5 or under
+            if (rating > 5) {
+                alert('Please rate 1 - 5');
+                return;
+            }
+
+
+            getRatings();
+        });
+
+        // Get ratings
+        function getRatings() {
+            for (let rating in ratings) {
+                // Get percentage
+                const starPercentage = (ratings[rating] / starsTotal) * 100;
+
+                // Round to nearest 10
+                const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
+
+                // Set width of stars-inner to percentage
+                document.querySelector(`.${rating} .stars-inner`).style.width = starPercentageRounded;
+
+                // Add number rating
+                document.querySelector(`.${rating} .number-rating`).innerHTML = ratings[rating];
+
+
+            }
+        }
+    </script>
+{% endblock %}

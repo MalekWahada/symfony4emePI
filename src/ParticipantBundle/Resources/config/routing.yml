@@ -1,0 +1,33 @@
+participant_participant:
+    resource: "@ParticipantBundle/Resources/config/routing/participant.yml"
+    prefix:   /participant
+
+
+
+participant_homepage:
+    path:     /
+    defaults: { _controller: "ParticipantBundle:Event:affichage" }
+    methods:  GET
+
+evenement_show:
+    path:     /{id}/show
+    defaults: { _controller: "ParticipantBundle:Event:show" }
+    methods:  GET
+
+participant_participer:
+    path:     /participation
+    defaults: { _controller: "ParticipantBundle:Event:participer" }
+
+participant_annuler:
+    path:     /annuler/{id}
+    defaults: { _controller: "ParticipantBundle:Event:supprimer" }
+
+search1:
+    path:     /search1
+    defaults: { _controller: "ParticipantBundle:Event:aff" }
+    methods:  GET
+
+search:
+    path:     /search
+    defaults: { _controller: "ParticipantBundle:Event:search" }
+

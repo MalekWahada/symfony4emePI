@@ -1,0 +1,28 @@
+auteur_index:
+    path:     /
+    defaults: { _controller: "AuteurBundle:Auteur:index" }
+    methods:  [GET, POST]
+
+auteur_show:
+    path:     /{idautr}/show
+    defaults: { _controller: "AuteurBundle:Auteur:show" }
+    methods:  GET
+
+auteur_new:
+    path:     /new
+    defaults: { _controller: "AuteurBundle:Auteur:new" }
+    methods:  [GET, POST]
+
+auteur_edit:
+    path:     /{idautr}/edit
+    defaults: { _controller: "AuteurBundle:Auteur:edit" }
+    methods:  [GET, POST]
+
+auteur_delete:
+    path:     /{idautr}/delete
+    defaults: { _controller: "AuteurBundle:Auteur:delete" }
+    methods:  DELETE
+
+auteur_delete_index:
+    path:     /{idautr}/deleteFromIndex
+    defaults: { _controller: "AuteurBundle:Auteur:deleteFromIndex" }

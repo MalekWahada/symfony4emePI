@@ -1,0 +1,28 @@
+comments_index:
+    path:     /
+    defaults: { _controller: "AdminForumBundle:Comments:index" }
+    methods:  [GET, POST]
+
+comments_show:
+    path:     /{idcmmt}/show
+    defaults: { _controller: "AdminForumBundle:Comments:show" }
+    methods:  GET
+
+comments_new:
+    path:     /new
+    defaults: { _controller: "AdminForumBundle:Comments:new" }
+    methods:  [GET, POST]
+
+comments_edit:
+    path:     /{idcmmt}/edit
+    defaults: { _controller: "AdminForumBundle:Comments:edit" }
+    methods:  [GET, POST]
+
+comments_delete:
+    path:     /{idcmmt}/delete
+    defaults: { _controller: "AdminForumBundle:Comments:delete" }
+    methods:  DELETE
+
+signal_delete_index:
+    path:     /deleteFromIndex
+    defaults: { _controller: "AdminForumBundle:Comments:deleteSignalFromIndex" }

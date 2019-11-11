@@ -1,0 +1,3 @@
+forum_mobil_homepage:
+    path:     /
+    defaults: { _controller: ForumMobilBundle:Default:index }

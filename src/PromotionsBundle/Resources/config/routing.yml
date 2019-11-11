@@ -1,0 +1,3 @@
+promotions_client_homepage:
+    path:     /
+    defaults: { _controller: PromotionsClientBundle:Default:index }

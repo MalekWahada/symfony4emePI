@@ -1,0 +1,27 @@
+locaux_index:
+    path:     /
+    defaults: { _controller: "LocauxBundle:Locaux:index" }
+    methods:  GET
+
+locaux_show:
+    path:     /{idloc}/show
+    defaults: { _controller: "LocauxBundle:Locaux:show" }
+    methods:  GET
+
+locaux_new:
+    path:     /new
+    defaults: { _controller: "LocauxBundle:Locaux:new" }
+    methods:  [GET, POST]
+
+locaux_edit:
+    path:     /{idloc}/edit
+    defaults: { _controller: "LocauxBundle:Locaux:edit" }
+    methods:  [GET, POST]
+
+locaux_delete:
+    path:     /{idloc}/delete
+    defaults: { _controller: "LocauxBundle:Locaux:delete" }
+    methods:  DELETE
+Locaux_map:
+    path:     /map
+    defaults: { _controller: "LocauxBundle:Locaux:Gmap" }

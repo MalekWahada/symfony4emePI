@@ -1,0 +1,66 @@
+{% extends 'baseClient.html.twig' %}
+
+{% block content %}
+    <br><br><br><br>
+    <h1>Emprunt</h1>
+
+    <div class="list__view">
+        <div class="thumb">
+            <a class="first__img" href="single-product.html"><img src="{{ asset('uploads/images/' ~ emprunt.image) }}" alt="product images"></a>
+
+        </div>
+        <div class="content">
+            <h2>{{ emprunt.nomlivre }}</h2>
+            <ul class="rating d-flex">
+                <li class="on"><i class="fa fa-star-o"></i></li>
+                <li class="on"><i class="fa fa-star-o"></i></li>
+                <li class="on"><i class="fa fa-star-o"></i></li>
+                <li class="on"><i class="fa fa-star-o"></i></li>
+                <li><i class="fa fa-star-o"></i></li>
+                <li><i class="fa fa-star-o"></i></li>
+            </ul>
+            <ul class="prize__box">
+                <li>{{ emprunt.nomauteur }}</li>
+
+            </ul>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
+            <table>
+                <tr>
+                    <td><h6>Utilisateur:</h6></td>
+                    <td>{{ emprunt.username }}</td>
+                </tr>
+                <tr>
+                    <td><h6>Email :</h6></td>
+                    <td>{{ emprunt.email }}</td>
+                </tr>
+            </table>
+
+            <ul class="cart__action d-flex">
+                <li class="cart"><a href="{{ path('emprunt_Rendre', { 'id': emprunt.id }) }}">Rendre</a></li>
+
+                <li class="compare"><a href="{{ path('emprunt_indexClient') }}"></a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    {#<div class="card" style="width: 18rem;">
+        <img src="{{ asset('uploads/images/' ~ emprunt.image) }}" height="250px" width="250px">
+        <div class="card-body">
+            <h5 class="card-title">A Propos</h5>
+            <p class="card-text">Ce Livre est mis pour emprunter le {% if emprunt.date %}{{ emprunt.date|date('Y-m-d') }}{% endif %} par {{ emprunt.username }}.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i style="font-family:Helvetica Neue, Helvetica, Arial, sans-serif">Livre :</i>{{ emprunt.nomlivre }}</li>
+            <li class="list-group-item"><i style="font-family:Helvetica Neue, Helvetica, Arial, sans-serif">Auteur :</i>{{ emprunt.nomauteur }}</li>
+            <li class="list-group-item"><i style="font-family:Helvetica Neue, Helvetica, Arial, sans-serif">Utilisateur :</i>{{ emprunt.username }}</li>
+            <li class="list-group-item"><i style="font-family:Helvetica Neue, Helvetica, Arial, sans-serif">Email :</i>{{ emprunt.username }}</li>
+        </ul>
+        <div class="card-body">
+            <a href="{{ path('emprunt_index') }}" class="card-link">Back to the list</a>
+            <a href="{{ path('emprunt_edit', { 'id': emprunt.id }) }}" class="card-link">Edit</a>
+        </div>
+    </div>#}
+{% endblock %}

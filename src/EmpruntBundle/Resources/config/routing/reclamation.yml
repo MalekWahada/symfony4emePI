@@ -1,0 +1,37 @@
+reclamation_index:
+    path:     /
+    defaults: { _controller: "EmpruntBundle:Reclamation:index" }
+    methods:  GET
+
+reclamation_show:
+    path:     /{id}/show
+    defaults: { _controller: "EmpruntBundle:Reclamation:show" }
+    methods:  GET
+
+reclamation_new:
+    path:     /new
+    defaults: { _controller: "EmpruntBundle:Reclamation:new" }
+    methods:  [GET, POST]
+
+reclamation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EmpruntBundle:Reclamation:edit" }
+    methods:  [GET, POST]
+
+reclamation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EmpruntBundle:Reclamation:delete" }
+    methods:  DELETE
+
+reclamation_delete1:
+    path:     /{id}/delete1
+    defaults: { _controller: "EmpruntBundle:Reclamation:deleteFromIndex"}
+
+reclamation_indexClient:
+    path:     /Client
+    defaults: { _controller: "EmpruntBundle:Reclamation:indexClient" }
+    methods:  GET
+reclamation_ajouter:
+    path:     /ajouter.php
+    defaults: { _controller: "EmpruntBundle:Reclamation:ajouter" }
+    methods:  GET

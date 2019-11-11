@@ -1,0 +1,162 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block container %}
+<!--===============================================================================================-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <body class="bg-light">
+    <div class="content p-4">
+        <div class="text-center mb-4">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Responsive -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-4097235499795154"
+                 data-ad-slot="5211442851"
+                 data-ad-format="auto"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <h1 style="color: #00afea;text-align: center; ">Liste des Livres</h1>
+        <ul>
+            <li>
+                <a href="{{ path('livres_new') }}">Create a new livre</a>
+            </li>
+        </ul>
+        <div class="card mb-4">
+            <div class="card-body">
+                <table id="example" class="table table-hover" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Auteur</th>
+                        <th>Categorie</th>
+                        <th>Mpub</th>
+                        <th>Rate</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                        <th>Stock</th>
+                        <th>Actions</th>
+
+                    </tr>
+                    </thead>
+                    <tbody >
+                    {% for livre in livres %}
+
+                                    <tr>
+                                        <td><a href="{{ path('livres_show', { 'id': livre.id }) }}">{{ livre.id }}</a></td>
+                                        <td>{{ livre.nom }}</td>
+                                        <td>{{ livre.auteur }}</td>
+                                        <td>{{ livre.categorie }}</td>
+                                        <td >{{ livre.mPub }}</td>
+                                        <td >{{ livre.rate }}</td>
+                                        <td>{{ livre.description }}</td>
+                                        <td >{{ livre.prix }}</td>
+                                        <td>{{ livre.stock }}</td>
+
+
+                                        <td>
+
+
+                                                    <a href="{{ path('livres_show', { 'id': livre.id }) }}"class="btn btn-danger" value="show"> Afficher</a>
+
+                                                    <a href="{{ path('livres_edit', { 'id': livre.id }) }}"class="btn btn-danger"value="edit">Modifier</a>
+
+
+                                        </td>
+                                    </tr>
+
+
+                        <script>
+                            // Initial Ratings
+                            var ratings = {
+                               ratelivre: {{ livre.rate }},
+
+                            }
+
+                            // Total Stars
+                            const starsTotal = 5;
+
+                            // Run getRatings when DOM loads
+                            document.addEventListener('DOMContentLoaded', getRatings);
+
+                            // Form Elements
+                            const ratingControl = document.getElementById('rating-control');
+
+
+                            // Rating control change
+                            ratingControl.addEventListener('blur', (e) => {
+                                var rating = e.target.value;
+
+                                // Make sure 5 or under
+                                if (rating > 5) {
+                                    alert('Please rate 1 - 5');
+                                    return;
+                                }
+
+
+                                getRatings();
+                            });
+
+                            // Get ratings
+                            function getRatings() {
+                                for (let rating in ratings) {
+                                    // Get percentage
+                                    const starPercentage = (ratings[rating] / starsTotal) * 100;
+
+                                    // Round to nearest 10
+                                    const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
+
+                                    // Set width of stars-inner to percentage
+                                    document.querySelector(`.${rating} .stars-inner`).style.width = starPercentageRounded;
+
+                                    // Add number rating
+                                    document.querySelector(`.${rating} .number-rating`).innerHTML = ratings[rating];
+                                }
+                            }
+                        </script>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="{{ asset('jsA/jquery.min.js') }}"> </script>
+    <script src="{{ asset('jsA/bootstrap.bundle.min.js') }}"> </script>
+    <script src="{{ asset('jsA/datatables.min.js') }}"> </script>
+    <script src="{{ asset('jsA/moment.min.js') }}"> </script>
+    <script src="{{ asset('jsA/fullcalendar.min.js') }}"> </script>
+    <script src="{{ asset('jsA/bootadmin.min.js') }}"> </script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118868344-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-118868344-1');
+    </script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-4097235499795154",
+            enable_page_level_ads: true
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,4 @@
+services:
+#    forum_mobil.example:
+#        class: ForumMobilBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

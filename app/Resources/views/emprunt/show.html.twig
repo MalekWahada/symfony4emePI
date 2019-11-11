@@ -1,0 +1,75 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block container %}
+    <h1>Emprunt</h1>
+
+{#    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ emprunt.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomlivre</th>
+                <td>{{ emprunt.nomlivre }}</td>
+            </tr>
+            <tr>
+                <th>Nomauteur</th>
+                <td>{{ emprunt.nomauteur }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if emprunt.date %}{{ emprunt.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ emprunt.username }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ emprunt.email }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td></td>
+
+
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('emprunt_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('emprunt_edit', { 'id': emprunt.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>#}
+    <style>
+        h1 { color: #c9d0d4; font-family: 'Helvetica Neue', sans-serif; font-size: 46px; font-weight: 100; line-height: 50px; letter-spacing: 1px; padding: 0 0 40px; border-bottom: double #555; }
+
+    </style>
+    <div class="card" style="width: 18rem;">
+        <img src="{{ asset('uploads/images/' ~ emprunt.image) }}" height="250px" width="250px">
+        <div class="card-body">
+            <h5 class="card-title">A Propos</h5>
+            <p class="card-text">Ce Livre est mis pour emprunter le {% if emprunt.date %}{{ emprunt.date|date('Y-m-d') }}{% endif %} par {{ emprunt.username }}.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i style="font-family:Helvetica Neue, Helvetica, Arial, sans-serif">Livre :</i>{{ emprunt.nomlivre }}</li>
+            <li class="list-group-item"><i style="font-family:Helvetica Neue, Helvetica, Arial, sans-serif">Auteur :</i>{{ emprunt.nomauteur }}</li>
+            <li class="list-group-item"><i style="font-family:Helvetica Neue, Helvetica, Arial, sans-serif">Utilisateur :</i>{{ emprunt.username }}</li>
+            <li class="list-group-item"><i style="font-family:Helvetica Neue, Helvetica, Arial, sans-serif">Email :</i>{{ emprunt.username }}</li>
+        </ul>
+        <div class="card-body">
+            <a href="{{ path('emprunt_index') }}" class="card-link">Back to the list</a>
+            <a href="{{ path('emprunt_edit', { 'id': emprunt.id }) }}" class="card-link">Edit</a>
+        </div>
+    </div>
+{% endblock %}

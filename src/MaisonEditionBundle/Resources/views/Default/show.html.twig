@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Maisonedition</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ maisonedition.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ maisonedition.nom }}</td>
+            </tr>
+            <tr>
+                <th>Nationalite</th>
+                <td>{{ maisonedition.nationalite }}</td>
+            </tr>
+            <tr>
+                <th>Groupeeditoriel</th>
+                <td>{{ maisonedition.groupeeditoriel }}</td>
+            </tr>
+            <tr>
+                <th>Proprietaire</th>
+                <td>{{ maisonedition.proprietaire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('maisonedition_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('maisonedition_edit', { 'id': maisonedition.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

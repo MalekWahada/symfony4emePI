@@ -1,0 +1,52 @@
+{% extends 'baseClient.html.twig' %}
+
+{% block content %}
+    <br><br><br><br><br>
+    <h4>Emprunt List</h4>
+    <br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 ol-lg-12">
+
+                <div class="table-content wnro__table table-responsive">
+    <table>
+        <thead>
+        <tr>
+        <tr class="title-top">
+            <th class="product-thumbnail">Image</th>
+            <th class="product-name">Livre</th>
+            <th class="product-price">Auteur</th>
+            <th class="product-quantity">Date</th>
+            <th class="product-subtotal">Utilisateur</th>
+            <th class="product-remove">Action</th>
+        </tr>
+        </tr>
+        </thead>
+        <tbody>
+        {% for emprunt in emprunts %}
+            <tr>
+                <td class="product-thumbnail"><a href="#"><img src="{{ asset('uploads/images/' ~ emprunt.image) }}"  alt="product img"></a></td>
+                <td class="product-name"><a href="#">{{ emprunt.nomlivre }}</a></td>
+                <td class="product-price"><span class="amount">{{ emprunt.nomauteur }}</span></td>
+                <td class="product-subtotal">{% if emprunt.date %}{{ emprunt.date|date('Y-m-d') }}{% endif %}</td>
+                <td class="product-subtotal">{{ emprunt.username }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('emprunt_showClient', { 'id': emprunt.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('emprunt_editClient', { 'id': emprunt.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+                </div>
+        </div></div></div>
+
+
+
+{% endblock %}

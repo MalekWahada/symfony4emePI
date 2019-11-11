@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Maisoneditions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Nationalite</th>
+                <th>Groupeeditoriel</th>
+                <th>Proprietaire</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for maisonedition in maisoneditions %}
+            <tr>
+                <td><a href="{{ path('maisonedition_show', { 'id': maisonedition.id }) }}">{{ maisonedition.id }}</a></td>
+                <td>{{ maisonedition.nom }}</td>
+                <td>{{ maisonedition.nationalite }}</td>
+                <td>{{ maisonedition.groupeeditoriel }}</td>
+                <td>{{ maisonedition.proprietaire }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('maisonedition_show', { 'id': maisonedition.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('maisonedition_edit', { 'id': maisonedition.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('maisonedition_new') }}">Create a new maisonedition</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,55 @@
+emprunt_indexClient:
+    path:     /
+    defaults: { _controller: "EmpruntBundle:Emprunt:indexClient" }
+    methods:  [GET, POST]
+
+emprunt_indexClient2:
+    path:     /Gerer
+    defaults: { _controller: "EmpruntBundle:Emprunt:indexClient2" }
+    methods:  [GET, POST]
+
+emprunt_showClient:
+    path:     /{id}/show
+    defaults: { _controller: "EmpruntBundle:Emprunt:showClient" }
+    methods:  GET
+
+emprunt_newClient:
+    path:     /new
+    defaults: { _controller: "EmpruntBundle:Emprunt:newClient" }
+    methods:  [GET, POST]
+
+emprunt_editClient:
+    path:     /{id}/edit
+    defaults: { _controller: "EmpruntBundle:Emprunt:editClient" }
+    methods:  [GET, POST]
+
+emprunt_deleteClient:
+    path:     /{id}/delete
+    defaults: { _controller: "EmpruntBundle:Emprunt:deleteClient" }
+    methods:  DELETE
+
+emprunt_delete1Client:
+    path:     /{id}/delete1
+    defaults: { _controller: "EmpruntBundle:Emprunt:deleteFromIndexClient" }
+
+
+emprunt_rechercherClient:
+    path:     /rechercher.php
+    defaults: { _controller: "EmpruntBundle:Emprunt:rechercherClient" }
+    methods:  [GET, POST]
+
+
+emprunt_Client:
+    path:     /{id}
+    defaults: { _controller: "EmpruntBundle:Emprunt:Emprunter" }
+    methods:  [GET, POST]
+
+emprunt_Rendre:
+    path:     /{id}/
+    defaults: { _controller: "EmpruntBundle:Emprunt:Rendre" }
+    methods:  [GET, POST]
+
+emprunt_showClient2:
+    path:     /{id}/show2
+    defaults: { _controller: "EmpruntBundle:Emprunt:showClient2" }
+    methods:  GET

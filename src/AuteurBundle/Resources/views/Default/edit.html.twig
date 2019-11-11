@@ -1,0 +1,18 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block container %}
+    <h1>Auteur edit</h1>
+<div class="card-body">
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+    <div class="card-footer bg-white">
+        <input type="submit" value="Edit" class="btn btn-primary" /> </div>
+    {{ form_end(edit_form) }}
+</div>
+    <ul>
+        <li>
+            <a href="{{ path('auteur_index') }}"class="btn btn-icon btn-pill btn-info" data-toggle="tooltip" title="nouveau"><i >Back to list</i></a>
+        </li>
+
+    </ul>
+{% endblock %}

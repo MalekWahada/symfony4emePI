@@ -1,0 +1,27 @@
+{% extends 'baseClient.html.twig' %}
+
+{% block content %}
+    <div style="height: 100px">
+
+    </div>
+    <!-- Start Error Area -->
+    <section class="page_error section-padding--lg bg--white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="error__inner text-center">
+                        <div class="error__logo">
+                            <a href="#"><img src="{{ asset('images/others/404.jpg') }}" alt="error images"></a>
+                        </div>
+                        <div class="error__content">
+                            <h2>Erreur - 404</h2>
+                            <p>Veullier essayer de vous connecter</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Error Area -->
+{% endblock %}
+

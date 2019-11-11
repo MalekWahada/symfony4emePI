@@ -1,0 +1,48 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block container %}
+    <h1>Comment</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idcmmt</th>
+                <td>{{ comment.idcmmt }}</td>
+            </tr>
+            <tr>
+                <th>Iduser</th>
+                <td>{{ comment.iduser }}</td>
+            </tr>
+            <tr>
+                <th>Cmmt</th>
+                <td>{{ comment.cmmt }}</td>
+            </tr>
+            <tr>
+                <th>Timecmmt</th>
+                <td>{% if comment.timecmmt %}{{ comment.timecmmt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nblikes</th>
+                <td>{{ comment.nblikes }}</td>
+            </tr>
+            <tr>
+                <th>Nbsignal</th>
+                <td>{{ comment.nbsignal }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('comments_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('comments_edit', { 'idcmmt': comment.idcmmt }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

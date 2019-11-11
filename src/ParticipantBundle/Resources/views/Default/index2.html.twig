@@ -1,0 +1,91 @@
+{% extends 'baseClient.html.twig' %}
+{%  block content%}
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/plugins.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <!-- Start Bradcaump area -->
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="bradcaump__inner text-center">
+                    <h2 class="bradcaump-title">Les événements</h2>
+                    <nav class="bradcaump-content">
+                        <span class="brd-separetor">/</span>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Bradcaump area -->
+    <!-- Start Blog Area -->
+
+    <div class="container">
+        <img src="https://cdn-images-1.medium.com/max/800/1*Nna8XsI6E69GoPQCdv-n1g.jpeg" style="width:1600px" height="400px">
+        <div class="row">
+            <div class="col-lg-9 col-12">
+                <div class="blog-page">
+                    <div class="page__header">
+                            <h2>Liste des événements</h2>
+                        </div>
+                        <!-- Start Single Post -->
+
+                        {% for participant in participants %}
+                            <article class="blog__post d-flex flex-wrap">
+                                <div class="thumb">
+                                    <a href="blog-details.html">
+                                        <img src="{{ participant.idEvent.img }}" style="width: 200px">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h4><div>{{ participant.idEvent.nom }}</div></h4>
+                                    <ul class="post__meta">
+                                        <li>Date :  </li> <div>{{ participant.idEvent.date }}</div>
+                                        <li class="post_separator">/</li>
+                                        <li>{{ participant.idEvent.heure }}</li>
+                                    </ul>
+
+                                    <form method="post" action="{{  path('participant_annuler', { 'id': participant.id})}}"  >
+                                        <ul class="post__meta">
+
+                                            <li>Lieu : </li> <div>{{ participant.idEvent.lieu }}</div>
+                                        </ul>
+                                        <input type="text" name="date" id="date" value="{{ participant.idEvent.date }}" hidden>
+                                        <input type="text" name="id" value="{{ participant.idEvent.id }}" hidden >
+                                        <div>{{ participant.idEvent.description }}</div></p>
+                                        <div class="blog__btn">
+                                            <input type="submit" value="Annuler Participation" class="btn btn-danger btn-rounded">
+                                        </div>
+                                    </form>
+                                </div>
+                            </article>
+
+                        {% endfor %}
+
+<br><br><br>
+                    <div class="navigation">
+                        {{ knp_pagination_render(participants) }}
+                    </div>
+
+
+
+
+                                             <!-- End Single Post -->
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Blog Area -->
+
+{% endblock %}

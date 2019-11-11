@@ -1,0 +1,17 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block container %}
+    <h1>Reclamation creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    <button class="btn btn-success" onclick="fonct()" style="width:100px;">Create</button>
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('reclamation_index') }}">Back to the list</a>
+        </li>
+
+    </ul>
+{% endblock %}

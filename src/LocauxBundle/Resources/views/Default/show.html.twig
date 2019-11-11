@@ -1,0 +1,40 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block container %}
+    <h1>Locaux</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idloc</th>
+                <td>{{ locaux.idloc }}</td>
+            </tr>
+            <tr>
+                <th>Adrs</th>
+                <td>{{ locaux.adrs }}</td>
+            </tr>
+            <tr>
+                <th>Xs</th>
+                <td>{{ locaux.xs }}</td>
+            </tr>
+            <tr>
+                <th>Ys</th>
+                <td>{{ locaux.ys }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('locaux_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('locaux_edit', { 'idloc': locaux.idloc }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

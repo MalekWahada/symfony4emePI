@@ -1,0 +1,24 @@
+comments1_index:
+    path:     /
+    defaults: { _controller: "MlkStatBundle:Comments:index" }
+    methods:  GET
+
+comments1_show:
+    path:     /{idcmmt}/show
+    defaults: { _controller: "MlkStatBundle:Comments:show" }
+    methods:  GET
+
+comments1_new:
+    path:     /new
+    defaults: { _controller: "MlkStatBundle:Comments:new" }
+    methods:  [GET, POST]
+
+comments1_edit:
+    path:     /{idcmmt}/edit
+    defaults: { _controller: "MlkStatBundle:Comments:edit" }
+    methods:  [GET, POST]
+
+comments1_delete:
+    path:     /{idcmmt}/delete
+    defaults: { _controller: "MlkStatBundle:Comments:delete" }
+    methods:  DELETE

@@ -1,0 +1,17 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block container %}
+    <div id="lc"></div>
+{% endblock %}
+{% block javascripts %}
+
+
+
+
+    <script type="text/javascript" src="{{ asset('https://www.gstatic.com/charts/loader.js')}}"></script>
+    <script type="text/javascript">
+        {{ gc_draw(lc, 'lc') }}
+    </script>
+
+{% endblock %}
+
